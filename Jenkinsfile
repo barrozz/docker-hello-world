@@ -5,16 +5,17 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                sh """
+                    docker build -t hello-world
+                """
             }
         }
-        stage('Test') {
+        stage('run') {
             steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                echo 'running..'
+                sh """
+                    docker run --rm hello-world
+                """
             }
         }
     }
