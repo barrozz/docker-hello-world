@@ -9,10 +9,14 @@ pipeline {
             }
             
             steps {
-                echo 'Testing..'
-                sh """
-                    echo "What a wonderful day !"
-                """
+                sh([
+                    label: "install dependencies",
+                    script: "npm install"
+                ])
+                sh([
+                    label: "run tests",
+                    script: "npm test"
+                ])
             }
         }
     //     stage('run') {
