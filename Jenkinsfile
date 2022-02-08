@@ -1,11 +1,13 @@
 pipeline {
-    agent   {
-        label 'nodejs'
-    
-    }
+    agent none
 
     stages {
         stage('Test') {
+            agent   {
+                label 'nodejs'
+    
+            }
+            
             steps {
                 echo 'Testing..'
                 sh """
